@@ -1,6 +1,6 @@
 import unittest
 
-from src.model.simulation import Simulation
+from src.model.city import City
 
 
 class SimulationTest(unittest.TestCase):
@@ -9,7 +9,7 @@ class SimulationTest(unittest.TestCase):
         num_bikes = 10
         num_stations = 3
 
-        simulation = Simulation.from_numbers(num_bikes, num_stations)
+        simulation = City.from_numbers(num_bikes, num_stations)
 
         self.assertEqual(len(simulation.stations), num_stations)
         self.assertEqual(len(simulation.bikes), num_bikes)
