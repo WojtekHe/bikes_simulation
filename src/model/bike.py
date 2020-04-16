@@ -9,3 +9,7 @@ class Bike:
         self.bike_id = bike_id
         self.is_valid = True
         self.breaking_chance = BIKE_BREAKING_BASE_CHANCE
+
+    def break_bike(self) -> 'Bike':
+        self.is_valid = False
+        return self
