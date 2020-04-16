@@ -7,7 +7,7 @@ class TripTest(unittest.TestCase):
 
     def test_trip_from_start_time(self):
 
-        t = Trip.from_start_time(None, 10, 5)
+        t = Trip.from_start_time(None, 10, 5, None, None)
         expected_end_time = 10+5
         actual_end_time = t.end_time
 

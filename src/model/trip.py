@@ -1,7 +1,7 @@
-
 from .bike import Bike
 from .station import Station
 from .listener import OnTimeChangeListener
+
 
 class Trip(OnTimeChangeListener):
 
@@ -16,7 +16,7 @@ class Trip(OnTimeChangeListener):
     @classmethod
     def from_start_time(cls, bike: Bike, start_time: int, duration: int,
                         from_station: Station, to_station: Station) -> 'Trip':
-        end_time = start_time+duration
+        end_time = start_time + duration
         return cls(bike, end_time, from_station, to_station)
 
     def start_trip(self) -> 'Trip':
@@ -29,4 +29,4 @@ class Trip(OnTimeChangeListener):
 
     def on_time_change(self, time):
         if time == self.end_time:
-            self.__
+            self.__end_trip()

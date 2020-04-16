@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6dccbc0f-d678-420e-9f56-0da00117d470" name="Default Changelist" comment="" />
+    <list default="true" id="6dccbc0f-d678-420e-9f56-0da00117d470" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/trip.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/trip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_simulation/model/test_trip.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_simulation/model/test_trip.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +21,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1adIDP2WKtm2GeC5TtlO0NHMrKL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -91,5 +101,16 @@
       <updated>1587058923921</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
