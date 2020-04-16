@@ -1,3 +1,5 @@
+from typing import List
+
 from .bike import Bike
 from .station import Station
 from .trip import Trip
@@ -6,7 +8,7 @@ from .listener import OnTimeChangeListener
 
 class Simulation:
 
-    def __init__(self, bikes, stations):
+    def __init__(self, bikes: List[Bike], stations: List[Station]):
         self.bikes = bikes
         self.stations = stations
 
