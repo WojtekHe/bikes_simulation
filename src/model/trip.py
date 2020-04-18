@@ -21,6 +21,8 @@ class Trip(OnTimeChangeListener):
 
     def start_trip(self) -> 'Trip':
         self.from_station.bike_leaves(self.bike)
+        print(f"\tbike {self.bike.bike_id} leaves from {self.from_station.station_id} to {self.to_station.station_id} ({self.end_time})")
+        self.bike.try_break_bike()
         return self
 
     def __end_trip(self):
