@@ -1,3 +1,5 @@
+import numpy as np
+
 from .constants import BIKE_BREAKING_BASE_CHANCE
 
 
@@ -12,10 +14,12 @@ class Bike:
 
     def break_bike(self) -> 'Bike':
         self.is_valid = False
+        print(f"\tBIKE {self.bike_id} BROKEN")
         return self
 
-    def try_break_bike(self, random_value: int) -> bool:
+    def try_break_bike(self) -> bool:
         if self.is_valid:
+            random_value = 1-np.random.random()
             if random_value <= self.breaking_chance:
                 self.break_bike()
             else:
