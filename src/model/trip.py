@@ -27,6 +27,8 @@ class Trip(OnTimeChangeListener):
         self.to_station.bike_arrives(self.bike)
         # todo increase bikes failure chance?
 
-    def on_time_change(self, time):
+    def on_time_change(self, time: int) -> bool:
         if time == self.end_time:
             self.__end_trip()
+            return True
+        return False
