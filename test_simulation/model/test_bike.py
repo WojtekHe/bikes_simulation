@@ -3,6 +3,7 @@ import unittest
 from src.model.bike import Bike
 from src.model.constants import BIKE_BREAKING_BASE_CHANCE
 
+
 class BikeTest(unittest.TestCase):
 
     def test_try_breaking_break(self):
