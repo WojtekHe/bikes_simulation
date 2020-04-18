@@ -13,3 +13,13 @@ class Bike:
     def break_bike(self) -> 'Bike':
         self.is_valid = False
         return self
+
+    def try_break_bike(self, random_value: int) -> bool:
+        if self.is_valid:
+            if random_value <= self.breaking_chance:
+                self.break_bike()
+            else:
+                self.breaking_chance = self.breaking_chance + BIKE_BREAKING_BASE_CHANCE
+        return self.is_valid
+
+
