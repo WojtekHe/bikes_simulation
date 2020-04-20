@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6dccbc0f-d678-420e-9f56-0da00117d470" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/bike.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/bike.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/trip.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/trip.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simulation/bike_rental.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/bike_rental.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/simulation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simulation/simulation_constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/simulation_constants.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
