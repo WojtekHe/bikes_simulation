@@ -1,10 +1,12 @@
 import pandas as pd
 import numpy as np
+from tqdm import tqdm
 
 from typing import List, Generator
 
 from .bike_rental import BikeRental
 from src.model import bike, city, station, listener, trip
+
 
 class Simulation:
 
@@ -16,7 +18,7 @@ class Simulation:
         np.random.seed(random_seed)
         renting = BikeRental(city)
 
-        for t in range(max_time):
+        for t in tqdm(range(max_time), "simulating"):
             print(f"time: {t}")
             new_trips = renting.simulate_bikes_renting(t)
             self.time_change_listeners.extend(new_trips)
