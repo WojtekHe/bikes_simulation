@@ -14,7 +14,7 @@ class Bike:
 
     def break_bike(self) -> 'Bike':
         self.is_valid = False
-        print(f"\tBIKE {self.bike_id} BROKEN")
+        # print(f"\tBIKE {self.bike_id} BROKEN")
         return self
 
     def try_break_bike(self) -> bool:

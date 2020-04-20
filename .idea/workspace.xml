@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6dccbc0f-d678-420e-9f56-0da00117d470" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/bike.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/bike.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/trip.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/trip.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simulation/bike_rental.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/bike_rental.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/simulation.py" afterDir="false" />
@@ -75,6 +77,20 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests for test_bike.BikeTest.test_try_breaking_break" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="bikes_simulation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_simulation/model" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_bike.BikeTest.test_try_breaking_break&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unittests for test_bike.BikeTest.test_try_breaking_not_break" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="bikes_simulation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -86,20 +102,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_bike.BikeTest.test_try_breaking_not_break&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test_city.SimulationTest.test_assign_bikes_randomly" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="bikes_simulation" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_simulation/model" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_city.SimulationTest.test_assign_bikes_randomly&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -121,9 +123,9 @@
       <list>
         <item itemvalue="Python.app" />
         <item itemvalue="Python tests.Unittests for test_bike.BikeTest" />
+        <item itemvalue="Python tests.Unittests for test_bike.BikeTest.test_try_breaking_break" />
         <item itemvalue="Python tests.Unittests for test_bike.BikeTest.test_try_breaking_not_break" />
         <item itemvalue="Python tests.Unittests for test_city.SimulationTest.test_assign_bikes_randomly_two_stations" />
-        <item itemvalue="Python tests.Unittests for test_city.SimulationTest.test_assign_bikes_randomly" />
       </list>
     </recent_temporary>
   </component>
@@ -152,16 +154,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/app.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

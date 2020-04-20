@@ -19,11 +19,15 @@ class Trip(OnTimeChangeListener):
         end_time = start_time + duration
         return cls(bike, end_time, from_station, to_station)
 
-    def start_trip(self) -> 'Trip':
+    def start_trip(self) -> bool:
+        """
+        starts trip and returns True if the bike has been broken during the trip
+
+        :return: True if bike broken during the trip
+        """
         self.from_station.bike_leaves(self.bike)
-        print(f"\tbike {self.bike.bike_id} leaves from {self.from_station.station_id} to {self.to_station.station_id} ({self.end_time})")
-        self.bike.try_break_bike()
-        return self
+        # print(f"\tbike {self.bike.bike_id} leaves from {self.from_station.station_id} to {self.to_station.station_id} ({self.end_time})")
+        return self.bike.try_break_bike()
 
     def __end_trip(self):
         self.to_station.bike_arrives(self.bike)

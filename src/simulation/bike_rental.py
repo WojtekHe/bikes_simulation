@@ -16,12 +16,12 @@ class BikeRental:
         self.city = city
         np.random.seed(random_seed)
 
-    def simulate_bikes_renting(self, actual_time) -> Generator[Trip, None, None]:
+    def simulate_bikes_renting(self, actual_time) -> Generator[Tuple[Trip, bool], None, None]:
         for bike, station in self.__find_bike():
             duration = self.__generate_trip_duration()
             destination = self.__find_destination_station()
             trip = Trip.from_start_time(bike, actual_time, duration, station, destination)
-            yield trip.start_trip()
+            yield trip, trip.start_trip()
 
     def __find_bike(self) -> Generator[Tuple[Bike, Station], None, None]:
         for station in self.city.stations:
