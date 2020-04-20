@@ -1,30 +1,33 @@
 import unittest
+from unittest.mock import patch
 
 from src.model.bike import Bike
-from src.model.constants import BIKE_BREAKING_BASE_CHANCE
+from src.model.constants import BIKE_BREAKING_BASE_CHANCE, BIKE_BREAKING_INCREASE
 
 
 class BikeTest(unittest.TestCase):
 
-    def test_try_breaking_break(self):
+    @patch("numpy.random.random")
+    def test_try_breaking_break(self, mock_random):
+        mock_random.return_value = 1
 
         bike = Bike(1)
-        chance = 0
 
-        actual_is_valid = bike.try_break_bike(chance)
+        has_been_broken = bike.try_break_bike()
 
-        self.assertFalse(actual_is_valid)
+        self.assertTrue(has_been_broken)
 
-    def test_try_breaking_not_break(self):
+    @patch("numpy.random.random")
+    def test_try_breaking_not_break(self, mock_random):
+        mock_random.return_value = 0
 
         bike = Bike(1)
-        chance = 1
-        expected_breaking_chance = 2*BIKE_BREAKING_BASE_CHANCE
+        expected_breaking_chance = BIKE_BREAKING_BASE_CHANCE + BIKE_BREAKING_INCREASE
 
-        actual_is_valid = bike.try_break_bike(chance)
+        actual_has_been_broken = bike.try_break_bike()
         actual_breaking_chance = bike.breaking_chance
 
-        self.assertTrue(actual_is_valid)
+        self.assertFalse(actual_has_been_broken)
         self.assertEqual(expected_breaking_chance, actual_breaking_chance)
 
 

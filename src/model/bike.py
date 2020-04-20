@@ -1,6 +1,6 @@
 import numpy as np
 
-from .constants import BIKE_BREAKING_BASE_CHANCE
+from .constants import BIKE_BREAKING_BASE_CHANCE, BIKE_BREAKING_INCREASE
 
 
 class Bike:
@@ -22,8 +22,9 @@ class Bike:
             random_value = 1-np.random.random()
             if random_value <= self.breaking_chance:
                 self.break_bike()
+                return True
             else:
-                self.breaking_chance = self.breaking_chance + BIKE_BREAKING_BASE_CHANCE
-        return self.is_valid
+                self.breaking_chance = self.breaking_chance + BIKE_BREAKING_INCREASE
+                return False
 
 
