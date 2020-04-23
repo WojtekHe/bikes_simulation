@@ -16,4 +16,5 @@ class AppTest(unittest.TestCase):
         broken_bikes = simulaiton.get_breaking_bikes_data()
         trips_history = simulaiton.get_stations_data()
 
-        bikes_scoring.BikesScoring(station_changes.StationChanges(trips_history).find_stations_changes()).score_bikes()
+        res_stations_changes = station_changes.StationChanges(trips_history).find_stations_changes()
+        scores = bikes_scoring.BikesScoring(res_stations_changes).score_bikes()
