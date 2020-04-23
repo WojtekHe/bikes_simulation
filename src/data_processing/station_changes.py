@@ -29,7 +29,7 @@ class StationChanges:
         out = []
 
         for station in self.df[simulation_constants.SimulationConstants.STATION_ID_LABEL].unique():
-            print(f"FROM STATION {station}")
+            # print(f"FROM STATION {station}")
             df_temp = self.df[self.df[simulation_constants.SimulationConstants.STATION_ID_LABEL] == station]\
                 .reset_index(drop=True)
 
