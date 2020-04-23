@@ -27,7 +27,7 @@ class BikeRental:
         for station in self.city.stations:
             for bike in station.bikes:
                 chance = 1 - np.random.random()
-                broken_bike_penalty = 1 if bike.is_valid else constants.BROKEN_BIKE_RENTAL_PENALTY
+                broken_bike_penalty = 1 if bike.is_valid else 1-constants.BROKEN_BIKE_RENTAL_PENALTY
 
                 final_bike_rental_chance = constants.BIKE_RENTAL_CHANCE * broken_bike_penalty
 
