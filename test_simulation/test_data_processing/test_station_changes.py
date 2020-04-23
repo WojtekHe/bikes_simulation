@@ -10,10 +10,10 @@ from src.simulation import simulation_constants
 class StationChangesTest(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.df = pd.DataFrame.from_dict({simulation_constants.SimulationConstants.BIKES_IDS_LABEL:
-                                              [{1, 2, 3}, {2, 4}, {1, 3}, {4}],
+        self.df = pd.DataFrame.from_dict({simulation_constants.SimulationConstants.TIMESTAMP_LABEL: [0, 1, 1, 0],
                                           simulation_constants.SimulationConstants.STATION_ID_LABEL: [0, 1, 0, 1],
-                                          simulation_constants.SimulationConstants.TIMESTAMP_LABEL: [0, 1, 1, 0]})
+                                          simulation_constants.SimulationConstants.BIKES_IDS_LABEL:
+                                              [{1, 2, 3}, {2, 4}, {1, 3}, {4}]})
 
     def test_prepare_len_columns(self):
         test_values = {processing_constants.MOVED_COLUMN: {1},
@@ -32,7 +32,9 @@ class StationChangesTest(unittest.TestCase):
     def test_find_stations_changes(self):
         test_data = self.df
 
-        expected = {processing_constants.STAYED_COLUMN: {0: {1, 3}, 1: {4}},
+        expected = {simulation_constants.SimulationConstants.TIMESTAMP_LABEL: {0: 1, 1: 1},
+                    simulation_constants.SimulationConstants.STATION_ID_LABEL: {0: 0, 1: 1},
+                    processing_constants.STAYED_COLUMN: {0: {1, 3}, 1: {4}},
                     processing_constants.ARRIVED_COLUMN: {0: set(), 1: {2}},
                     processing_constants.MOVED_COLUMN: {0: {2}, 1: set()},
                     processing_constants.LEN_STAYED_COLUMN: {0: 2, 1: 1},

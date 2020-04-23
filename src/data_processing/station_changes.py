@@ -1,4 +1,5 @@
 import pandas as pd
+from tqdm import tqdm
 
 from typing import Dict, Any
 
@@ -9,6 +10,14 @@ from ..simulation import simulation_constants
 class StationChanges:
 
     def __init__(self, history: pd.DataFrame) -> None:
+        """
+         df scheme:
+
+           * TIMESTAMP_LABEL = "timestamp"
+           * STATION_ID_LABEL = "station_id"
+           * BIKES_IDS_LABEL = "bikes_ids"
+
+        """
         self.df = history.sort_values(by=[simulation_constants.SimulationConstants.TIMESTAMP_LABEL])
 
     def find_stations_changes(self):
@@ -27,19 +36,23 @@ class StationChanges:
         :return:
         """
         out = []
+        tqdm.pandas()
 
-        for station in self.df[simulation_constants.SimulationConstants.STATION_ID_LABEL].unique():
-            # print(f"FROM STATION {station}")
+        for station in tqdm(self.df[simulation_constants.SimulationConstants.STATION_ID_LABEL].unique(),
+                            "finding stations changes"):
             df_temp = self.df[self.df[simulation_constants.SimulationConstants.STATION_ID_LABEL] == station]\
                 .reset_index(drop=True)
 
-            for idx, set_ in enumerate(df_temp[simulation_constants.SimulationConstants.BIKES_IDS_LABEL]):
+            for idx, row_values in enumerate(df_temp.values):
+                time, station_id, set_ = row_values
                 try:
                     prev = df_temp[simulation_constants.SimulationConstants.BIKES_IDS_LABEL].loc[idx - 1]
-                except KeyError as e:
+                except KeyError:
                     pass
                 else:
-                    res = {processing_constants.STAYED_COLUMN: set_ & prev,
+                    res = {simulation_constants.SimulationConstants.TIMESTAMP_LABEL: time,
+                           simulation_constants.SimulationConstants.STATION_ID_LABEL: station_id,
+                           processing_constants.STAYED_COLUMN: set_ & prev,
                            processing_constants.ARRIVED_COLUMN: set_ - prev,
                            processing_constants.MOVED_COLUMN: prev - set_}
 
@@ -50,7 +63,7 @@ class StationChanges:
     @staticmethod
     def _prepare_len_columns(data_dict: Dict[str, Any]) -> Dict[str, Any]:
         temp = {}
-        for k, v in data_dict.items():
+        for k, v in [(k, v) for k, v in data_dict.items() if k in processing_constants.LEN_MAPPING.keys()]:
             temp[processing_constants.LEN_MAPPING[k]] = len(v)
 
         data_dict.update(temp)

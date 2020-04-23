@@ -1,4 +1,5 @@
 import pandas as pd
+from tqdm import tqdm
 
 from typing import Generator, List, Any, Iterable
 
@@ -28,7 +29,8 @@ class BikesScoring:
 
     def _collect_results(self):
         accumulator = []
-        for scores in self.df.apply(lambda x: BikesScoring._score_record(x), axis=1):
+        tqdm.pandas(desc="scoring bikes")
+        for scores in self.df.progress_apply(lambda x: BikesScoring._score_record(x), axis=1):
             accumulator.extend(list(scores))
         return accumulator
 
