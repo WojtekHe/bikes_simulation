@@ -12,6 +12,18 @@ class StationChanges:
         self.df = history.sort_values(by=[simulation_constants.SimulationConstants.TIMESTAMP_LABEL])
 
     def find_stations_changes(self):
+        """
+        out - pd.DataFrame with columns:
+
+           * processing_constants.STAYED_COLUMN -> ("stayed")
+           * processing_constants.ARRIVED_COLUMN -> ("arrived")
+           * processing_constants.MOVED_COLUMN -> ("moved")
+           * processing_constants.LEN_STAYED_COLUMN -> len("stayed")
+           * processing_constants.LEN_ARRIVED_COLUMN -> len("arrived")
+           * processing_constants.LEN_MOVED_COLUMN -> len("moved")
+
+        :return:
+        """
         out = []
 
         for station in self.df[simulation_constants.SimulationConstants.STATION_ID_LABEL].unique():
