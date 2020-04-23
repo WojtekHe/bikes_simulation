@@ -15,6 +15,8 @@ class StationChanges:
         """
         out - pd.DataFrame with columns:
 
+           * SimulationConstants.TIMESTAMP_LABEL -> "timestamp"
+           * SimulationConstants.STATION_ID_LABEL -> "station_id"
            * processing_constants.STAYED_COLUMN -> ("stayed")
            * processing_constants.ARRIVED_COLUMN -> ("arrived")
            * processing_constants.MOVED_COLUMN -> ("moved")
