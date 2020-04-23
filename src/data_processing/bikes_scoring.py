@@ -29,7 +29,6 @@ class BikesScoring:
     def _collect_results(self):
         accumulator = []
         for scores in self.df.apply(lambda x: BikesScoring._score_record(x), axis=1):
-            print(list(scores))
             accumulator.extend(list(scores))
         return accumulator
 

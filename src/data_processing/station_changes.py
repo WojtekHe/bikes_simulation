@@ -34,18 +34,16 @@ class StationChanges:
                 .reset_index(drop=True)
 
             for idx, set_ in enumerate(df_temp[simulation_constants.SimulationConstants.BIKES_IDS_LABEL]):
-                print(idx, set_)
                 try:
                     prev = df_temp[simulation_constants.SimulationConstants.BIKES_IDS_LABEL].loc[idx - 1]
                 except KeyError as e:
-                    print("that was first!")
+                    pass
                 else:
                     res = {processing_constants.STAYED_COLUMN: set_ & prev,
                            processing_constants.ARRIVED_COLUMN: set_ - prev,
                            processing_constants.MOVED_COLUMN: prev - set_}
 
                     out.append(self._prepare_len_columns(res))
-                    print(f"\t{res}")
 
         return pd.DataFrame(out)
 
