@@ -4,7 +4,7 @@ import pandas as pd
 
 from src.data_processing import processing_constants
 from src.simulation.simulation_constants import SimulationConstants
-from src.data_processing.bikes_scoring import BikesScoring
+from src.data_processing.bikes_scoring import BikesScoring, BikesChecking
 
 class BikesScoringTest(unittest.TestCase):
 
@@ -50,3 +50,44 @@ class BikesScoringTest(unittest.TestCase):
         actual_values = BikesScoring(self.df).score_bikes().values.tolist()
 
         self.assertListEqual(expected_values, actual_values)
+
+
+class BikesCheckingTest(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.all_bikes = [1, 2, 3, 4, 5]
+        self.broken_bikes = pd.DataFrame.from_dict({SimulationConstants.TIMESTAMP_LABEL: [2, 5],
+                                                    SimulationConstants.BIKE_ID_LABEL: [1, 4]})
+        self.checking = BikesChecking(self.broken_bikes, self.all_bikes)
+
+    def test_broken_bikes_for_time2(self):
+        time = 2
+        expected_broken_bikes = [1]
+
+        actual_broken_bikes = self.checking.broken_bikes_for_time(time).values.tolist()
+
+        self.assertListEqual(expected_broken_bikes, actual_broken_bikes)
+
+    def test_broken_bikes_for_time3(self):
+        time = 3
+        expected_broken_bikes = [1]
+
+        actual_broken_bikes = self.checking.broken_bikes_for_time(time).values.tolist()
+
+        self.assertListEqual(expected_broken_bikes, actual_broken_bikes)
+
+    def test_broken_bikes_for_time5(self):
+        time = 5
+        expected_broken_bikes = [1, 4]
+
+        actual_broken_bikes = self.checking.broken_bikes_for_time(time).values.tolist()
+
+        self.assertListEqual(expected_broken_bikes, actual_broken_bikes)
+
+    def test_bikes_states(self):
+        time = 2
+        expected_states = {1: False, 2: True, 3: True, 4: True, 5: True}
+
+        actual_states = self.checking.bikes_states(time).to_dict()
+
+        self.assertDictEqual(expected_states, actual_states)

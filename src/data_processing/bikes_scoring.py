@@ -61,3 +61,24 @@ class BikesScoring:
     def _score_record_plus(record: pd.Series) -> Generator[List[Any], None, None]:
         for moved_bike_id in record[processing_constants.MOVED_COLUMN]:
             yield [moved_bike_id, record[SimulationConstants.TIMESTAMP_LABEL], 1, 0]
+
+
+class BikesChecking:
+
+    def __init__(self, broken_bikes: pd.DataFrame, all_bikes: Iterable) -> None:
+        self.df_broken = broken_bikes
+        self.all_bikes = all_bikes
+
+    def broken_bikes_for_time(self, time: int) -> pd.Series:
+        broken_bikes_for_the_moment = self.df_broken[self.df_broken[SimulationConstants.TIMESTAMP_LABEL] <= time]
+        return broken_bikes_for_the_moment[SimulationConstants.BIKE_ID_LABEL]
+
+    def bikes_states(self, time: int) -> pd.Series:
+        res = pd.DataFrame(index=self.all_bikes)
+        res["valid"] = True
+
+        broken_bikes_for_time = self.broken_bikes_for_time(time)
+        res.loc[broken_bikes_for_time.values, "valid"] = False
+
+        return res["valid"]
+
