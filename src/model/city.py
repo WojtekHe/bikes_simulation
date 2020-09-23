@@ -37,3 +37,9 @@ class City:
         for bike in self.bikes:
             self.stations[np.random.randint(0, len(self.stations))].bikes.append(bike)
         return self
+
+    def make_n_bikes_broken(self, n):
+        for i in range(n):
+            self.bikes[i].is_valid = False
+
+        return self

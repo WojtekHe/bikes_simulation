@@ -22,7 +22,7 @@ class BikesScoringTest(unittest.TestCase):
         record = self.df.iloc[0]
 
         # order: bike_id, time, plus, minus
-        expected_values = [[1, 1, 0, 1 / 4], [3, 1, 0, 1 / 4]]
+        expected_values = [[1, 1, 0, 1 / 2], [3, 1, 0, 1 / 2]]
         actual_values = list(BikesScoring._score_record_minus(record))
 
         self.assertListEqual(expected_values, actual_values)
@@ -39,14 +39,14 @@ class BikesScoringTest(unittest.TestCase):
     def test_score_record(self):
         record = self.df.iloc[0]
 
-        expected_values = [[1, 1, 0, 1 / 4], [3, 1, 0, 1 / 4], [2, 1, 1, 0], [99, 1, 1, 0]]
+        expected_values = [[1, 1, 0, 1 / 2], [3, 1, 0, 1 / 2], [2, 1, 1, 0], [99, 1, 1, 0]]
         actual_values = list(BikesScoring._score_record(record))
 
         self.assertListEqual(expected_values, actual_values)
 
     def test_score_bikes(self):
         # order: bike_id, time, plus, minus
-        expected_values = [[1, 1, 0, 1 / 4], [3, 1, 0, 1 / 4], [2, 1, 1, 0], [99, 1, 1, 0]]
+        expected_values = [[1, 1, 0, 1 / 2], [3, 1, 0, 1 / 2], [2, 1, 1, 0], [99, 1, 1, 0]]
         actual_values = BikesScoring(self.df).score_bikes().values.tolist()
 
         self.assertListEqual(expected_values, actual_values)

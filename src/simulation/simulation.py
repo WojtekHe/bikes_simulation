@@ -32,6 +32,8 @@ class Simulation(BrokenBikesDataProvider, StationStatesDataProvider):
         return pd.DataFrame(data=self.stations_states, columns=stations_columns)
 
     def simulate(self, city: city.City, max_time: int, random_seed=997) -> List[trip.Trip]:
+        self._validate_bikes(city.bikes)
+
         np.random.seed(random_seed)
         renting = BikeRental(city)
 
@@ -43,13 +45,18 @@ class Simulation(BrokenBikesDataProvider, StationStatesDataProvider):
             bikes_renting_generator = renting.simulate_bikes_renting(t)
             for trip, has_break in bikes_renting_generator:
                 if has_break:
-                    self.bikes_breaking.append(self.__prepare_bike_breaking_record(trip, t))
+                    self.bikes_breaking.append(self.__prepare_bike_breaking_record_from_trip(trip, t))
                 self.time_change_listeners.append(trip)
             # self.time_change_listeners.extend([trip for trip, time in bikes_renting_generator])
 
             self.__time_changing(t)
 
         return self
+
+    def _validate_bikes(self, bikes: List[bike.Bike]):
+        for bike in bikes:
+            if not bike.is_valid:
+                self.bikes_breaking.append(self.__prepare_bike_breaking_record(0, bike.bike_id))
 
     def __time_changing(self, time: int) -> None:
         """
@@ -84,10 +91,13 @@ class Simulation(BrokenBikesDataProvider, StationStatesDataProvider):
         }
         return result
 
-    def __prepare_bike_breaking_record(self, trip: trip.Trip, time: int) -> Dict[str, Any]:
+    def __prepare_bike_breaking_record_from_trip(self, trip: trip.Trip, time: int) -> Dict[str, Any]:
+        return self.__prepare_bike_breaking_record(time, trip.bike.bike_id)
+
+    def __prepare_bike_breaking_record(self, time: int, bike_id: int):
         res = {
             constants.SimulationConstants.TIMESTAMP_LABEL: time,
-            constants.SimulationConstants.BIKE_ID_LABEL: trip.bike.bike_id
+            constants.SimulationConstants.BIKE_ID_LABEL: bike_id
         }
         return res
 

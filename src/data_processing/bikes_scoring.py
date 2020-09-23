@@ -53,14 +53,21 @@ class BikesScoring:
     @staticmethod
     def _score_record_minus(record: pd.Series) -> Generator[List[Any], None, None]:
         if record[processing_constants.LEN_MOVED_COLUMN] > 0:
-            divide_by = record[processing_constants.LEN_STAYED_COLUMN] + record[processing_constants.LEN_MOVED_COLUMN]
+            len_stayed = len(record[processing_constants.STAYED_COLUMN])
+            len_gone = len(record[processing_constants.MOVED_COLUMN])
+            score = len_gone/(len_gone+len_stayed)
+            # score = 0.1
             for stayed_bike_id in record[processing_constants.STAYED_COLUMN]:
-                yield [stayed_bike_id, record[SimulationConstants.TIMESTAMP_LABEL], 0, 1.0 / divide_by]
+                yield [stayed_bike_id, record[SimulationConstants.TIMESTAMP_LABEL], 0, score]
 
     @staticmethod
     def _score_record_plus(record: pd.Series) -> Generator[List[Any], None, None]:
         for moved_bike_id in record[processing_constants.MOVED_COLUMN]:
-            yield [moved_bike_id, record[SimulationConstants.TIMESTAMP_LABEL], 1, 0]
+            len_stayed = len(record[processing_constants.STAYED_COLUMN])
+            len_gone = len(record[processing_constants.MOVED_COLUMN])
+            # score = 1 - 1/(len_stayed+len_gone+1)
+            score = 1
+            yield [moved_bike_id, record[SimulationConstants.TIMESTAMP_LABEL], score, 0]
 
 
 class BikesChecking:
